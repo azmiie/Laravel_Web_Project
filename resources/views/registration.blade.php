@@ -17,7 +17,8 @@
           <label class="form-label">Password</label>
           <input type="password" class="form-control" name="password">
       </div>  
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Register</button>
+      <small class="d-block text-center mt-3">Already registered? <a href="/registration">Login Now!</a></small>
     </form>
 </div>
 @endsection

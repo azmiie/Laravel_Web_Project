@@ -13,6 +13,7 @@
                 <input type="password" class="form-control" name="password">
             </div>  
             <button type="submit" class="btn btn-primary">Submit</button>
+            <small class="d-block text-center mt-3">Not registered? <a href="/registration">Register Now!</a></small>
     </form>
 </div>
 @endsection
