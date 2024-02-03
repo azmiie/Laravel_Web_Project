@@ -1,5 +1,6 @@
-@extends('layout')
-@section('title', 'Registration')
-@section('content')
-  <h1>Home Page</h1>
+@extends('layout.main')
+
+<!-- apa yang ada di dalam section akan masuk ke yield -->
+@section('container')
+    <h1>Halaman Home</h1>
 @endsection

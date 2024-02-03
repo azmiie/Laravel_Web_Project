@@ -1,5 +1,8 @@
-@extends('layout')
-@section('title', 'Registration')
-@section('content')
-  <h1>About Page</h1>
+@extends('layout.main')
+
+@section('container')
+    <h1>Halaman about</h1>
+    <h3>{{ $name }}</h3>
+    <p>{{ $email }}</p>
+    <img src="image/{{ $image }}" alt="{{ $name }}" width="200">
 @endsection

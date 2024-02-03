@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\dashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthManager;
-
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\registerController;
+use App\Http\Controllers\staffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +18,36 @@ use App\Http\Controllers\AuthManager;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-Route::get('/login', [AuthManager::class, 'login'])->name('login.post');
-Route::post('/login', [AuthManager::class, 'loginpost'])->name('login.post');
-Route::get('/registration',  [AuthManager::class, 'registration'])->name('registration');
-Route::post('/registration', [AuthManager::class, 'registrationpost'])->name('registration.post');
-Route::get('/logout', [AuthManager::class,'logout'])->name('logout');
-
-Route::get('/home', function () {
-    return view('home');
+    return view('home', [
+        'title' => 'home',
+    ]);
 });
 
 Route::get('/about', function () {
-    return view('home');
+    return view('about',[
+        'name' => 'Muhammad Faris',
+        'email' => 'farissenior24@gmail.com',
+        'image' => 'logo.png',
+        'title' => 'about'
+    ]);
 });
+
+Route::get('/blog', function () {
+    return view('posts', [
+        'title' => 'blog'
+    ]);
+});
+
+Route::get('/login', [loginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [loginController::class, 'authenticate']);
+Route::post('/logout', [loginController::class, 'logout']);
+Route::get('/register', [registerController::class, 'index'])->middleware('guest');
+Route::post('/register', [registerController::class, 'store']);
+Route::get('/dashboard', function(){
+    return view('dashboard.index');
+})->middleware('auth');
+
+
+route::get('/dashboard/staffInformation', [staffController::class, 'index']) -> name('staffInformation');
+route::get('/exportStaff', [staffController::class, 'staffExport']) -> name('exportStaff');
+route::post('/importStaff', [staffController::class, 'staffimportexcel']) -> name('importStaff');
